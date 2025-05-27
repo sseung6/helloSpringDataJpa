@@ -19,10 +19,10 @@ public class Product {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotBlank(message = "상품명을 입력해주세요.")
     private String name;
 
     private String brand;
+
     private String madeIn;
 
     @Min(value = 0, message = "가격은 0 이상이어야 합니다.")

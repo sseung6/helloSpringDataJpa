@@ -11,6 +11,19 @@
 <div class="container">
   <h1 class="mt-5">Product List</h1>
 
+  <!-- 로그인 사용자 이름 & 로그아웃 버튼 -->
+  <div class="d-flex justify-content-between mb-3">
+    <div>
+      <div sec:authorize="isAuthenticated()">
+        <span th:text="${#authentication.name} + ' 님 환영합니다!'"></span>
+      </div>
+    </div>
+
+    <form th:action="@{/logout}" method="post" sec:authorize="isAuthenticated()">
+      <button type="submit" class="btn btn-outline-danger btn-sm">Logout</button>
+    </form>
+  </div>
+
   <div class="mb-3" sec:authorize="hasRole('ADMIN')">
     <a class="btn btn-primary me-2" th:href="@{/products/new}">
       Create New Product
